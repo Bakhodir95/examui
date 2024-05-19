@@ -56,8 +56,9 @@ class _LoginPage extends State<LoginPage> {
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
                     )),
-                const TextField(
-                  decoration: InputDecoration(
+                TextField(
+                  controller: emailCheck,
+                  decoration: const InputDecoration(
                       hintText: 'Enter Your Email',
                       hintStyle: TextStyle(
                         color: Colors.grey,
@@ -76,6 +77,7 @@ class _LoginPage extends State<LoginPage> {
                       fontWeight: FontWeight.w500,
                     )),
                 TextField(
+                  controller: passwordCheck,
                   obscureText: isHiddein,
                   decoration: InputDecoration(
                       hintText: '****************',
@@ -159,7 +161,7 @@ class _LoginPage extends State<LoginPage> {
                                   ),
                                   const SizedBox(height: 5),
                                   const Text(
-                                    "User not",
+                                    "Successfully logged in",
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 18,
@@ -248,6 +250,8 @@ class _LoginPage extends State<LoginPage> {
 }
 
 bool checkuser(String email, String password) {
+  print(Database.user);
+
   for (var i = 0; i < Database.user.length; i++) {
     if (email == Database.user[i]["email"] &&
         password == Database.user[i]["password"]) {
