@@ -18,7 +18,7 @@ class _MainPageState extends State<MainPage> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (ctx) => LoginPage(),
+          builder: (ctx) => PageViews(),
         ),
       );
     });

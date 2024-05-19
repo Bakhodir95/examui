@@ -1,5 +1,8 @@
 import 'package:examui/class/buttons..dart';
+import 'package:examui/class/database.dart';
 import 'package:examui/create_accaunt.dart';
+import 'package:examui/main_page.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -11,6 +14,11 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPage extends State<LoginPage> {
   bool isHiddein = true;
+  String? emailVerification;
+  String? passwordVerification;
+  TextEditingController emailCheck = TextEditingController();
+  TextEditingController passwordCheck = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,12 +131,64 @@ class _LoginPage extends State<LoginPage> {
                 const SizedBox(
                   height: 25,
                 ),
-                ImortantButtons("=", () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => (CreateAccount())));
-                }),
+                ImortantButtons(
+                  "=",
+                  () {
+                    if (emailCheck.text.trim().isEmpty ||
+                        passwordCheck.text.trim().isEmpty) {
+                      if (emailCheck.text.trim().isEmpty) {
+                        emailVerification = "enter valid email";
+                      }
+                      if (passwordCheck.text.trim().isEmpty) {
+                        passwordVerification = "enter vaild password";
+                      }
+                    } else {
+                      if (checkuser(emailCheck.text, passwordCheck.text)) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              contentPadding: const EdgeInsets.all(20),
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    Icons.check_circle_outline_sharp,
+                                    color: Colors.green[600],
+                                    size: 60,
+                                  ),
+                                  const SizedBox(height: 5),
+                                  const Text(
+                                    "User not",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                        builder: (context) => (MainPage()),
+                                      ),
+                                    );
+                                  },
+                                  child: const Text("Log in"),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      } else {
+                        // showModalBottomSheet(context: context, builder: builder)
+                      }
+                    }
+                    setState(() {});
+                  },
+                ),
                 Padding(
                   padding: const EdgeInsets.all(20),
                   child: Row(
@@ -151,15 +211,24 @@ class _LoginPage extends State<LoginPage> {
                 ),
                 Center(
                   child: RichText(
-                    text: const TextSpan(
+                    text: TextSpan(
                       children: [
-                        TextSpan(
+                        const TextSpan(
                           text: "Don't have an account?",
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextSpan(
                           text: " Sign Up For Free",
-                          style: TextStyle(
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Register(),
+                                ),
+                              );
+                            },
+                          style: const TextStyle(
                             color: Colors.black,
                             decorationColor: Colors.black,
                             decorationThickness: 1,
@@ -176,4 +245,14 @@ class _LoginPage extends State<LoginPage> {
       ),
     );
   }
+}
+
+bool checkuser(String email, String password) {
+  for (var i = 0; i < Database.user.length; i++) {
+    if (email == Database.user[i]["email"] &&
+        password == Database.user[i]["password"]) {
+      return true;
+    }
+  }
+  return false;
 }
