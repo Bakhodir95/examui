@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:examui/login_page.dart';
 import 'package:examui/page_view.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class _MainPageState extends State<MainPage> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (ctx) => PageViews(),
+          builder: (ctx) => LoginPage(),
         ),
       );
     });

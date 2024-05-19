@@ -1,29 +1,35 @@
 import 'package:flutter/material.dart';
 
 class ImortantButtons extends StatefulWidget {
-  Function onpressed;
+  Function() onpressed;
   String text;
-  ImortantButtons(this.text,this.onpressed);
+  ImortantButtons(this.text, this.onpressed);
 
   @override
   State<ImortantButtons> createState() => _ImortantButtonsState();
 }
 
 class _ImortantButtonsState extends State<ImortantButtons> {
-  PageController controller = PageController();
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return Container(
+      width: double.infinity,
+      child: ElevatedButton(
         style: ButtonStyle(
-          shape: MaterialStatePropertyAll(
-              RoundedRectangleBorder(side: BorderSide.none)),
-          backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF0c8a7b)),
+          shape: WidgetStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+          ),
+          backgroundColor: WidgetStateProperty.all<Color>(Color(0xFF0c8a7b)),
         ),
-        onPressed: widget.onpressed(),
+        onPressed: widget.onpressed,
         child: Text(
           widget.text,
-          style: TextStyle(color: Colors.white),
-        ));
+          style: const TextStyle(color: Colors.white),
+        ),
+      ),
+    );
   }
 }

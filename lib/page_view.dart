@@ -1,4 +1,4 @@
-import 'package:examui/entrance_emailpage.dart';
+import 'package:examui/class/buttons..dart';
 import 'package:examui/login_page.dart';
 import 'package:flutter/material.dart';
 
@@ -48,54 +48,64 @@ class _PageViewsState extends State<PageViews> {
             ],
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TextButton(
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => EntranceEmail()));
-                  },
-                  child: Text(
-                    "Skip",
-                    style: TextStyle(color: Colors.grey.shade400, fontSize: 16),
-                  )),
-              ElevatedButton(
-                style: ButtonStyle(
-                  padding: MaterialStatePropertyAll(EdgeInsets.all(10)),
-                  backgroundColor: MaterialStateProperty.all(Color(0xFF0c8a7b)),
-                  shape: MaterialStateProperty.all(
-                    CircleBorder(
-                      side: BorderSide(style: BorderStyle.none),
-                    ),
-                  ),
-                ),
-                onPressed: () {
-                  controller.nextPage(
-                    duration: const Duration(seconds: 1),
-                    curve: Curves.bounceOut,
-                  );
-                  if (pageindex == 2) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => (EntranceEmail())),
-                    );
-                  }
-                  print(controller);
-                  setState(() {});
-                },
-                child: const Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  color: Colors.white,
-                  weight: 10,
+        pageindex == 2
+            ? Padding(
+                padding: const EdgeInsets.all(25),
+                child: ImortantButtons("Get Started", () {
+                  return Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => LoginPage()));
+                }),
+              )
+            : Padding(
+                padding: const EdgeInsets.all(20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => LoginPage()));
+                        },
+                        child: Text(
+                          "Skip",
+                          style: TextStyle(
+                              color: Colors.grey.shade400, fontSize: 16),
+                        )),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        padding: WidgetStatePropertyAll(EdgeInsets.all(10)),
+                        backgroundColor:
+                            WidgetStateProperty.all(Color(0xFF0c8a7b)),
+                        shape: WidgetStateProperty.all(
+                          CircleBorder(
+                            side: BorderSide(style: BorderStyle.none),
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        controller.nextPage(
+                          duration: const Duration(seconds: 1),
+                          curve: Curves.bounceOut,
+                        );
+                        if (pageindex == 2) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => (LoginPage())),
+                          );
+                        }
+                        print(controller);
+                        setState(() {});
+                      },
+                      child: const Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        color: Colors.white,
+                        weight: 10,
+                      ),
+                    )
+                  ],
                 ),
               )
-            ],
-          ),
-        )
       ],
     ));
   }
