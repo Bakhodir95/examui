@@ -82,12 +82,21 @@ class MostInInside extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Container(width: 121,height:21, child: Image.asset("images/afterlogin/stars.png"))
+                    Container(
+                        width: 150,
+                        height: 21,
+                        child: Image.asset("images/afterlogin/stars.png"))
                   ],
                 ),
                 Stack(
-                  alignment: Alignment(0.2, 1),
-                  // children: [Images],
+                  alignment: Alignment(1, 0.5),
+                  children: [
+                    CircleAvatar(
+                      child:
+                          Image.asset("images/afterlogin/circle_avatar1.png"),
+                      radius: 20,
+                    )
+                  ],
                 )
               ],
             )
