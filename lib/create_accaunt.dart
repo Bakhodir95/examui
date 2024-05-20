@@ -143,11 +143,11 @@ class _RegisterState extends State<Register> {
                     const SizedBox(height: 20),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           vertical: 13,
                           horizontal: 120,
                         ),
-                        backgroundColor: Color.fromARGB(255, 5, 51, 202),
+                        backgroundColor: const Color.fromARGB(255, 5, 51, 202),
                       ),
                       onPressed: () {
                         setState(() {
@@ -222,7 +222,7 @@ class _RegisterState extends State<Register> {
                         }
                       },
                       child: const Text(
-                        "Continue",
+                        "Sign Up",
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 20,
@@ -231,39 +231,9 @@ class _RegisterState extends State<Register> {
                       ),
                     ),
                     SizedBox(height: 20),
-                    Text(
-                      "By continuing, you agree to Loana's",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: "Terms of Use",
-                            style: TextStyle(
-                              color: Colors.black,
-                              decoration: TextDecoration.underline,
-                            ),
-                          ),
-                          TextSpan(
-                            text: " & ",
-                            style: TextStyle(color: Colors.grey),
-                          ),
-                          TextSpan(
-                            text: "Privacy and Policy",
-                            style: TextStyle(
-                              color: Colors.black,
-                              decoration: TextDecoration.underline,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
                   ],
                 ),
               ),
-              SizedBox(height: 20),
             ],
           ),
         ),

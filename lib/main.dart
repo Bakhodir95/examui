@@ -1,3 +1,4 @@
+import 'package:examui/after_logged.dart';
 import 'package:examui/main_page.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,7 @@ class MyProject extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MainPage(),
+      home: (AfterLogged()),
     );
   }
 }

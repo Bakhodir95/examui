@@ -139,10 +139,10 @@ class _LoginPage extends State<LoginPage> {
                     if (emailCheck.text.trim().isEmpty ||
                         passwordCheck.text.trim().isEmpty) {
                       if (emailCheck.text.trim().isEmpty) {
-                        emailVerification = "enter valid email";
+                        emailCheck.text = "enter valid email";
                       }
                       if (passwordCheck.text.trim().isEmpty) {
-                        passwordVerification = "enter vaild password";
+                        passwordCheck.text = "enter vaild password";
                       }
                     } else {
                       if (checkuser(emailCheck.text, passwordCheck.text)) {
