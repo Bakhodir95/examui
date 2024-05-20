@@ -64,6 +64,7 @@ class MostInInside extends StatelessWidget {
               ),
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   children: [
@@ -82,21 +83,48 @@ class MostInInside extends StatelessWidget {
                         ),
                       ],
                     ),
+                    Gap(10),
                     Container(
-                        width: 150,
+                        width: 190,
                         height: 21,
-                        child: Image.asset("images/afterlogin/stars.png"))
+                        child: Image.asset(
+                          "images/afterlogin/stars.png",
+                          fit: BoxFit.contain,
+                        ))
                   ],
                 ),
-                Stack(
-                  alignment: Alignment(1, 0.5),
-                  children: [
-                    CircleAvatar(
-                      child:
-                          Image.asset("images/afterlogin/circle_avatar1.png"),
-                      radius: 20,
-                    )
-                  ],
+                Expanded(
+                  child: Stack(
+                    children: [
+                      Align(
+                        alignment: Alignment(0.4, 0),
+                        child: Container(
+                          width: 40,
+                          height: 40,
+                          child: Image.asset(
+                              "images/afterlogin/circle_avatar1.png"),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment(0.7, 0),
+                        child: Container(
+                          width: 40,
+                          height: 40,
+                          child: Image.asset(
+                              "images/afterlogin/circle_avatar2.png"),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment(1, 0),
+                        child: Container(
+                          width: 40,
+                          height: 40,
+                          child: Image.asset(
+                              "images/afterlogin/circle_avatar3.png"),
+                        ),
+                      ),
+                    ],
+                  ),
                 )
               ],
             )
