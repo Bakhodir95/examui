@@ -15,7 +15,6 @@ class MostInInside extends StatefulWidget {
 
 class _MostInInsideState extends State<MostInInside> {
   int count = 0;
-
   double total = 0;
 
   @override
@@ -24,31 +23,25 @@ class _MostInInsideState extends State<MostInInside> {
 
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 100,
-        leading: Padding(
-          padding: const EdgeInsets.all(25),
-          child: IconButton(
-              onPressed: () {
-                print("salom");
-                Navigator.pop(context);
-              },
-              icon: Icon(Icons.arrow_back_ios_new)),
-        ),
+        // leadingWidth: 100,
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back_ios_new)),
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(25),
-            child: IconButton(
-                onPressed: () {
-                  widget.product.islike = !widget.product.islike;
-                  setState(() {});
-                },
-                icon: widget.product.islike
-                    ? const Icon(
-                        Icons.favorite,
-                        color: Colors.red,
-                      )
-                    : const Icon(Icons.favorite_border)),
-          )
+          IconButton(
+            onPressed: () {
+              widget.product.islike = !widget.product.islike;
+              setState(() {});
+            },
+            icon: widget.product.islike
+                ? const Icon(
+                    Icons.favorite,
+                    color: Colors.red,
+                  )
+                : const Icon(Icons.favorite_border),
+          ),
         ],
       ),
       body: Padding(
@@ -184,12 +177,12 @@ class _MostInInsideState extends State<MostInInside> {
                       style: ButtonStyle(
                         shape: WidgetStatePropertyAll(
                             CircleBorder(side: BorderSide.none)),
-                        backgroundColor: MaterialStateProperty.all<Color>(
+                        backgroundColor: WidgetStateProperty.all<Color>(
                             Colors.grey.shade300),
                       ),
                       onPressed: () {
                         setState(() {
-                          if (total > parsedPrice) {
+                          if (total >= parsedPrice) {
                             count--;
                             total -= parsedPrice;
                           }
@@ -226,7 +219,10 @@ class _MostInInsideState extends State<MostInInside> {
             ),
             Padding(
               padding: const EdgeInsets.all(10),
-              child: ImortantButtons("Add To Card", () {}),
+              child: ImortantButtons("Add To Card", () {
+                SingleProducts.card
+                    .add({"item": widget.product, "count": count});
+              }),
             )
           ],
         ),
