@@ -5,6 +5,7 @@ class SingleProduct {
   String description;
   String type;
   String style;
+  bool islike = false;
   SingleProduct(
       {required this.image,
       required this.price,
@@ -18,7 +19,7 @@ abstract class SingleProducts {
   static List<SingleProduct> products = [
     SingleProduct(
         image: "images/afterlogin/sariq.png",
-        price: "\$99.90",
+        price: "99.90",
         description:
             "The Swedish Designer Monica Forstar's Style Is Characterised By her Enternal love For New Materials and Beautiful Pure Shapes.",
         name: "Ox Mathis Chair",
@@ -26,7 +27,7 @@ abstract class SingleProducts {
         type: "Hans.j wegner"),
     SingleProduct(
         image: "images/afterlogin/yashil.png",
-        price: "\$99.90",
+        price: "99.90",
         description:
             "The Swedish Designer Monica Forstar's Style Is Characterised By her Enternal love For New Materials and Beautiful Pure Shapes.",
         name: "Fuji Arm Chair ",
